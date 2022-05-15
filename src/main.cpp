@@ -2,8 +2,10 @@
 #include <array>
 #include <iostream>
 #include <sstream>
+#include <tuple>
 
 #include "sortedView.hpp"
+
 
 /**
  * @brief Represents a large object
@@ -37,14 +39,7 @@ private:
 };
 
 
-/**
- * @brief Example program entry point
- * 
- * @return int 0 (success)
- */
-int main() {
-	std::cout << "Hello" << std::endl;
-
+static void sortedViewExample() {
 	// Allocating large objects in the stack is always a bad idea,
 	// but I would like to try the array deduction
 	std::array collection{
@@ -84,6 +79,18 @@ int main() {
 
 		std::cout << "[" << listElements.str() << "]" << std::endl;
 	}
+}
+
+
+/**
+ * @brief Example program entry point
+ * 
+ * @return int 0 (success)
+ */
+int main() {
+	std::cout << "Hello" << std::endl;
+
+	sortedViewExample();
 
 	return 0;
 }

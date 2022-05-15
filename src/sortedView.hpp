@@ -12,7 +12,7 @@
  * @brief Create a vector of reference_wrappers in an incremental order from the iterator range 
  * 
  * @tparam Container container type to order
- * @tparam Container::const_iterator container from and to iterators 
+ * @tparam ConstIt container from and to iterators 
  * @param from iterator start
  * @param to iterator end
  * @return auto vector of reference_wrappers to the object
