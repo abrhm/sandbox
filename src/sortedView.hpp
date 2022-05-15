@@ -13,12 +13,14 @@
  * 
  * @tparam Container container type to order
  * @tparam ConstIt container from and to iterators 
+ * @tparam ComparatorFn the comparator function
  * @param from iterator start
  * @param to iterator end
+ * @param compareFn comparator function
  * @return auto vector of reference_wrappers to the object
  */
-template<typename Container, typename ConstIt = typename Container::const_iterator>
-auto sortedView(ConstIt from, ConstIt to) {
+template<typename Container, typename ConstIt = typename Container::const_iterator, typename ComparatorFn>
+auto sortedView(ConstIt from, ConstIt to, ComparatorFn compareFn) {
 	std::vector<std::reference_wrapper<const typename Container::value_type> > viewContainer;
 
 	// Allocate space for each element
@@ -31,9 +33,7 @@ auto sortedView(ConstIt from, ConstIt to) {
 	);
 
 	// Sort the vector of references in order
-	std::sort(std::begin(viewContainer), std::end(viewContainer), 
-		[](const auto& lhs, const auto& rhs){ return lhs.get() < rhs.get(); }
-	);
+	std::sort(std::begin(viewContainer), std::end(viewContainer), compareFn);
 
 	return viewContainer;
 }

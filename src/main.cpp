@@ -63,8 +63,10 @@ static void sortedViewExample() {
 	}
 
 	{
-		// TODO: Avoid explicit type declaration with type deduction
-		const auto sortedCollection = sortedView<decltype(collection)>(std::cbegin(collection), std::cend(collection));
+		using collectionType = decltype(collection);
+		const auto sortedCollection = sortedView<collectionType>(std::cbegin(collection), std::cend(collection),
+			std::less<collectionType::value_type>()
+		);
 
 		/* TODO: Use boost to avoid trailing comma (if I remember correctly, it is something like)
 		boost::algorithm::join(collection | boost::adaptors::transformed(
